@@ -2,6 +2,8 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,6 +19,16 @@ Route::get('/shop', [PagesController::class, 'shop']);
 Route::get('/shop', [PagesController::class, 'shop_content']);
 Route::get('/contact', [PagesController::class, 'contact']);
 Route::get('/contact', [PagesController::class, 'contact_content']);
+
+Route::get('/index', [HomeController::class, 'index']);
+Route::get('/index', [HomeController::class, 'index_content']);
+Route::get('/shop', [PagesController::class, 'shop']);
+Route::get('/shop', [PagesController::class, 'shop_content']);
+Route::get('/contact', [PagesController::class, 'contact']);
+Route::get('/contact', [PagesController::class, 'contact_content']);
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
