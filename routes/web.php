@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
@@ -27,6 +27,8 @@ Route::get('/dashboard', function () {
 
 
 Route::resource('admin', AdminController::class);
+Route::resource('categories', CategoryController::class);
+
 
 
 Route::middleware('auth')->group(function () {
