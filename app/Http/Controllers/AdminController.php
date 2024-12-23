@@ -82,5 +82,15 @@ class AdminController extends Controller
 
         return redirect()->route('admin.index')->with('success', 'Product deleted successfully.');
     }
+    public function searchServices(Request $request)
+    {
+        $query = $request->input('query');
+        $products = Product::where('name', 'LIKE', '%' . $query . '%') // Search by name
+            ->orWhere('price', 'LIKE', '%' . $query . '%') // Search by price
+            ->limit(10) // Limit results
+            ->get();
+        return response()->json($products); // Return the results as JSON
+    }
+    
 }
     
