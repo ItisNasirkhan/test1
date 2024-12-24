@@ -16,6 +16,14 @@ return new class extends Migration
             $table->string('name');
             $table->decimal('price', 10, 2);
             $table->integer('quantity');
+            $table->unsignedBigInteger('categorie_id');
+
+            $table->foreign('categorie_id')            // Define the foreign key
+              ->references('id')                // Reference the `id` column
+              ->on('categories')              // In the `parent_table`
+              ->onDelete('cascade')           // Cascade on delete (optional)
+              ->onUpdate('cascade');           // Cascade on delete (optional)
+              
             $table->timestamps();
         });
     }

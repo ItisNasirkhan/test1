@@ -14,10 +14,8 @@
                     <a href="cart.html" id="lg-bag"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
                     </a> 
 
-                        <input type="text" id="search-bar" placeholder="Search products or categories"> 
-                        <div id="search-results"></div>
-                    
-                 
+                    <input type="text" placeholder="search" id="search"> 
+
                     <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
                     <a href="#" id="close"><button type="button" class="btn-close" aria-label="Close"></button></a>
             </div>

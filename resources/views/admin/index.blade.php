@@ -9,6 +9,14 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
+    <div class="d-flex flex-row-reverse p-2">
+            <input type="text" class="form-control" id="product-search" placeholder="Search by name or category">
+        </div>
+        <div id="product-results" class="row mt-0">
+            <!-- Results will be displayed here dynamically -->
+            
+        </div>
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -16,6 +24,7 @@
                 <th>Name</th>
                 <th>Price</th>
                 <th>Quantity</th>
+                <th>Category</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -26,6 +35,7 @@
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->quantity }}</td>
+                <td>{{ $product['category']['name'] }}</td>
                 <td>
                     <a href="{{ route('admin.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
                     <a href="{{ route('admin.show', $product->id) }}" class="btn btn-warning btn-sm">Show</a>
@@ -40,4 +50,31 @@
         </tbody>
     </table>
 </div>
+
+@push('scripts')
+        <script>
+            $(document).ready(function() {
+                $('#student-search').on('keyup', function() {
+                    let query = $(this).val();
+                    if (query.length > 0) {
+                        // Perform the AJAX request
+                        $.ajax({
+                            url: "{{ route('search') }}",
+                            method: 'GET',
+                            data: { query: query },
+                            success: function(response) {
+                                // Update the results section with the response
+                                $('#student-results').html(response);
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('Error:', error);
+                            }
+                        });
+                    } else {
+                        $('#student-results').empty();
+                    }
+                });
+            });
+        </script>
+    @endpush
 @endsection
