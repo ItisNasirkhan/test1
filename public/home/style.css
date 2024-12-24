@@ -876,6 +876,24 @@ footer a:hover{
     background-color:#088178;
     box-shadow: 0.1px 0.1px 20px rgba(0, 0, 0, 0.2);
  }
+
+ #product-results, #search-results {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fff;
+    max-height: 200px;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+}
+#product-results li, #search-results li {
+    padding: 10px;
+    cursor: pointer;
+}
+#product-results li:hover, #search-results li:hover {
+    background: #f0f0f0;
+}
+
 @media (max-width:799px) {
    
     #hero {

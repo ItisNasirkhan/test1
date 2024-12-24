@@ -84,6 +84,7 @@ class AdminController extends Controller
 
         return redirect()->route('admin.index')->with('success', 'Product deleted successfully.');
     }
+<<<<<<< HEAD
 
     public function search(Request $request)
     {
@@ -93,5 +94,17 @@ class AdminController extends Controller
         ->get();
         return view('admin.search-results', compact('products'));
     }
+=======
+    public function searchServices(Request $request)
+    {
+        $query = $request->input('query');
+        $products = Product::where('name', 'LIKE', '%' . $query . '%') // Search by name
+            ->orWhere('price', 'LIKE', '%' . $query . '%') // Search by price
+            ->limit(10) // Limit results
+            ->get();
+        return response()->json($products); // Return the results as JSON
+    }
+    
+>>>>>>> 3f48fa116454a9355d9739381e23d01fe8f38d1e
 }
     
